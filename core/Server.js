@@ -1,9 +1,12 @@
+const path = require('path');
 const express = require('express');
 // const https = require('https');
 const http = require('http');
 const bodyParser = require('body-parser');
 const { Logger, Config } = require('./CoreUtils');
 const RouteLoader = require('./routes/RouteLoader');
+const expressVue = require('express-vue');
+
 
 class Server {
 
@@ -15,12 +18,18 @@ class Server {
     this.app = express();
     this.router = express.Router();
 
+    const vueOptions = {
+      rootPath: path.join(__dirname, '../views'),
+    };
+    const expressVueMiddleware = expressVue.init(vueOptions);
+    this.expressVueMiddleware = expressVueMiddleware;
+    this.app.use(expressVueMiddleware);
 
-    options.viewPath = '../views';
-    if (options.viewPath) {
-      this.app.set('view engine', 'pug');
-      this.app.set('views', options.viewPath);
-    }
+    // options.viewPath = '../views';
+    // if (options.viewPath) {
+    //   this.app.set('view engine', 'pug');
+    //   this.app.set('views', options.viewPath);
+    // }
 
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: false }));
