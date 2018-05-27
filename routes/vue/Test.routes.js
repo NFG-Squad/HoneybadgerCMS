@@ -70,30 +70,16 @@ class TestRoute {
     // next();
   }
   async users(req, res, next) { // eslint-disable-line no-unused-vars
-    Logger.info('starting');
-
     try {
       var user = users.filter(function(item) {
         return item.name === req.params.userName;
       })[0];
-      // if (!user) user = {
-      //   name: 'unknown',
-      //   age: '?'
-      // };
-      if (!user) {
-        res.renderVue('404.vue');
-        return;
-      }
 
       res.renderVue('user.vue', {
         title: 'Hello My Name is',
         user: user,
       });
-      Logger.info('after');
-
-      // next();
     } catch(err) {
-      Logger.info('well, shit');
       Logger.error(err);
     }
   }

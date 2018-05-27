@@ -1,8 +1,13 @@
 <template>
     <div>
         <h1>{{ title }}</h1>
-        <p class="test2">{{(user && user.name) ? user.name : '?' }}</p>
-        <p>I am {{(user && user.age) ? user.age : '?'}} years old</p>
+        <div v-if="user">
+          <p class="test2">{{user.name}}</p>
+          <p>I am {{user.age}} years old</p>
+        </div>
+        <div v-else>
+          <p>User not found.</p>
+        </div>
     </div>
 </template>
 
@@ -10,11 +15,6 @@
 export default {
     data: function() {
         return {}
-    },
-    created: function() {
-        console.log('this')
-        console.log(this.user)
-        if (!this.user) console.log('bad user');
     }
 }
 </script>
