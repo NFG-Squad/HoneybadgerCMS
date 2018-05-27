@@ -16,15 +16,6 @@ users.push({
   age: 16,
 });
 
-const exampleMixin = {
-  methods: {
-    hello: function() {
-      Logger.info('Hello');
-    },
-  },
-};
-
-
 class TestRoute {
 
   constructor(server) {
@@ -37,7 +28,7 @@ class TestRoute {
     router.get('/users/:userName', this.users.bind(this));
     return router;
   }
-  home(req, res, next) {
+  home(req, res, next) { // eslint-disable-line no-unused-vars
     const data = {
       title: pageTitle,
       message: 'Hello!',
@@ -74,7 +65,7 @@ class TestRoute {
     res.renderVue('index.vue', data, vue);
     // next();
   }
-  users(req, res, next) {
+  users(req, res, next) { // eslint-disable-line no-unused-vars
     var user = users.filter(function(item) {
       return item.name === req.params.userName;
     })[0];
