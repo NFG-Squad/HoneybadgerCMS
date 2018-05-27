@@ -2,7 +2,7 @@
     <div>
         <h1>{{title}}</h1>
         <p>Welcome to the {{title}} demo. Click a link:</p>
-        <button type="button" name="button" v-on:click="hello">Say FOO</button>
+        <button type="button" name="button" v-on:click="addUser">Say FOO</button>
         <input v-model="message" placeholder="edit me">
         <message-comp :message="message"></message-comp>
         <users :users="users"></users>

@@ -2,7 +2,7 @@
 const { Logger } = require('../../core/CoreUtils');
 
 const users = [];
-const pageTitle = 'Express Vue';
+const pageTitle = 'Express Vue App';
 users.push({
   name: 'tobi',
   age: 12,
@@ -14,6 +14,10 @@ users.push({
 users.push({
   name: 'jane',
   age: 16,
+});
+users.push({
+  name: 'Sean',
+  age: 30,
 });
 
 class TestRoute {
@@ -65,15 +69,33 @@ class TestRoute {
     res.renderVue('index.vue', data, vue);
     // next();
   }
-  users(req, res, next) { // eslint-disable-line no-unused-vars
-    var user = users.filter(function(item) {
-      return item.name === req.params.userName;
-    })[0];
-    res.renderVue('user.vue', {
-      title: 'Hello My Name is',
-      user: user,
-    });
-    // next();
+  async users(req, res, next) { // eslint-disable-line no-unused-vars
+    Logger.info('starting');
+
+    try {
+      var user = users.filter(function(item) {
+        return item.name === req.params.userName;
+      })[0];
+      // if (!user) user = {
+      //   name: 'unknown',
+      //   age: '?'
+      // };
+      if (!user) {
+        res.renderVue('404.vue');
+        return;
+      }
+
+      res.renderVue('user.vue', {
+        title: 'Hello My Name is',
+        user: user,
+      });
+      Logger.info('after');
+
+      // next();
+    } catch(err) {
+      Logger.info('well, shit');
+      Logger.error(err);
+    }
   }
 
 }
