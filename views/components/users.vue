@@ -2,7 +2,7 @@
   <div class="">
       <ul>
           <li v-for="user in users">
-              <a v-bind:href="'/users/' + user.name"class="test">{{ user.name }}</a>
+              <a v-bind:href="'/users/' + user.name"class="test">{{ user.name }} : {{ user.age }}</a>
           </li>
       </ul>
   </div>

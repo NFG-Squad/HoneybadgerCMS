@@ -76,6 +76,11 @@ class TestRoute {
         return item.name === req.params.userName;
       })[0];
 
+      if (!user) {
+        res.redirect('/404');
+        return;
+      }
+
       res.renderVue('user.vue', {
         title: 'Hello My Name is',
         user: user,

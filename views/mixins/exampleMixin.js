@@ -3,10 +3,10 @@ module.exports = {
     hello: function () {
       console.log('Hello mixin');
     },
-    addUser: function () {
+    addUser: function (username, age) {
       this.users.push({
-        name: 'Billy',
-        age: 12,
+        name: username,
+        age: age,
       });
     }
   }
