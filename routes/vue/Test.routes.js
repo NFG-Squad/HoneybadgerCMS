@@ -37,6 +37,7 @@ class TestRoute {
       title: pageTitle,
       message: 'Hello!',
       users: users,
+      lang: res.locals.lang
     };
 
     const vue = {
@@ -78,6 +79,7 @@ class TestRoute {
       res.renderVue('user.vue', {
         title: 'Hello My Name is',
         user: user,
+        lang: res.locals.lang
       });
     } catch(err) {
       Logger.error(err);

@@ -4,7 +4,7 @@ const { routes } = require('../../routes/routes.json');
 
 class RouteLoader {
   static load(server) {
-    routes.map(r => {
+    routes.forEach(r => {
       const route = require(path.join(__dirname, '../../', r));
       server.app.use('/', new route(server).register(server.router));
     });

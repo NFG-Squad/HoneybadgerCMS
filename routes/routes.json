@@ -1,5 +1,6 @@
 {
   "routes": [
+    "/routes/core/Language.routes",
     "/routes/core/RequestLogger.routes",
     "/routes/core/HealthCheck.routes",
     "/routes/vue/Test.routes"

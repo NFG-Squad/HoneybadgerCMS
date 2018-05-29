@@ -2,10 +2,16 @@
     <div>
         <h1>{{title}}</h1>
         <p>Welcome to the {{title}} demo. Click a link:</p>
-        <button type="button" name="button" v-on:click="addUser">Say FOO</button>  
+        <button type="button" name="button" v-on:click="addUser">Say FOO</button>
         <input v-model="message" placeholder="edit me">
         <message-comp :message="message"></message-comp>
         <users :users="users"></users>
+        <p>
+            <a href="/">English</a>
+            <a href="/?lang=es-mx">Español</a>
+        </p>
+        <h3>{{ lang.pack["this.is.a.key"]}}</h3>
+        <h3>{{ lang.pack["this.is.another.key"]}}</h3>
     </div>
 </template>
 
