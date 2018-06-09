@@ -1,26 +1,25 @@
-<template>
-    <div>
-        <h1>{{ title || "Hello world!" }}</h1>
-        <div v-if="user">
-          <p class="test2">{{user.name}}</p>
-          <p>I am {{user.age}} years old</p>
-        </div>
-        <div v-else>
-          <p>User not found.</p>
-        </div>
-    </div>
+<template lang="pug">
+  div
+    h1 {{ title || "Hello world!" }}
+    div(v-if="user")
+      p(class="test2") {{user.name}}
+      p I am {{user.age}} years old
+    div(v-else)
+      p User Not Found
+    h3
+      a(v-bind:href="'/'") Back
 </template>
 
 <script>
-export default {
+  export default {
     data: function() {
-        return {}
+      return {}
     }
-}
+  }
 </script>
 
 <style>
-.test2 {
+  .test2 {
     color: blue;
-}
+  }
 </style>

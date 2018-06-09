@@ -1,22 +1,19 @@
-<template lang="html">
-  <div class="">
-      <ul>
-          <li v-for="user in users">
-              <a v-bind:href="'/users/' + user.name"class="test">{{ user.name }} : {{ user.age }}</a>
-          </li>
-      </ul>
-  </div>
+<template lang="pug">
+  div
+    ul
+      li(v-for='user in users')
+        a.test(v-bind:href="'/u/' + user.name") {{ user.name }} : {{ user.age }}
 </template>
 
 <script>
-export default {
+  export default {
     props: ['title', 'users']
-}
+  }
 </script>
 
 <style lang="css">
-    .test {
-        color: pink;
-        font-size: 20px;
-    }
+  .test {
+    color: pink;
+    font-size: 20px;
+  }
 </style>

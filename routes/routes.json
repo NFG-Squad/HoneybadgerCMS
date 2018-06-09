@@ -4,6 +4,7 @@
     "/routes/core/RequestLogger.routes",
     "/routes/core/HealthCheck.routes",
     "/routes/vue/Test.routes",
+    "/routes/apis/User.routes",
     "/routes/vue/NotFound.routes"
   ]
 }

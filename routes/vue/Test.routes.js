@@ -29,7 +29,7 @@ class TestRoute {
   register(router) {
     Logger.trace('TestRoute : register');
     router.get('/', this.home.bind(this));
-    router.get('/users/:userName', this.users.bind(this));
+    router.get('/u/:userName', this.users.bind(this));
     return router;
   }
   home(req, res, next) { // eslint-disable-line no-unused-vars
