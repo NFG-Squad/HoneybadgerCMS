@@ -6,11 +6,12 @@ const bodyParser = require('body-parser');
 const { Logger, Config } = require('./CoreUtils');
 const RouteLoader = require('./routes/RouteLoader');
 const expressVue = require('express-vue');
+const mongoose = require('mongoose');
 
 
 class Server {
 
-  start(options = {}) {
+  async start(options = {}) {
     Config.load();
     let httpPort = options.httpPort || Config.env.HTTP_PORT || 3000;
     // let httpsPort = options.httpsPort || Config.env.HTTPS_PORT || 3443;
@@ -43,6 +44,12 @@ class Server {
     //   Logger.info(`Starting the HTTPS application on port ${httpsPort}`);
     // }
 
+
+    mongoose.Promise = global.Promise;
+    this.app.locals.db = await mongoose.createConnection(Config.env.mongouri);
+    let user = require('../models/User.model')(this.app);
+    this.app.locals.models = {user};
+    
     RouteLoader.load(this);
     Logger.info('App started.');
   }
